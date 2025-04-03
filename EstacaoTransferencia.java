@@ -1,5 +1,3 @@
-package teste2;
-
 public class EstacaoTransferencia {
     int armazenamento;
     private Fila<CaminhaoPequeno> filaCaminhoes;

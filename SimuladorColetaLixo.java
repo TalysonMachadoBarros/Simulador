@@ -1,5 +1,3 @@
-package teste2;
-
 public class SimuladorColetaLixo {
     private Lista<CaminhaoPequeno> caminhoesPequenos;
     private Lista<CaminhaoGrande> caminhoesGrandes;

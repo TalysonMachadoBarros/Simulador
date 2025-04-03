@@ -1,5 +1,3 @@
-package teste2;
-
 public class Zona {
     private String nome;
     private int geracaoLixo; // em toneladas

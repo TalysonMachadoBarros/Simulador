@@ -1,5 +1,3 @@
-package teste2;
-
 public class CaminhaoPequeno {
     private int capacidade;
     private int cargaAtual;

@@ -1,5 +1,3 @@
-package teste2;
-
 public class Fila<T> {
     private Lista<T> lista;
 

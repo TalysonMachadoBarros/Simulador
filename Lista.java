@@ -1,5 +1,3 @@
-package teste2;
-
 public class Lista<T> {
     private Node<T> head;
     private int size;
