@@ -29,4 +29,8 @@ public class CaminhaoPequeno {
     public int getViagensRealizadas() {
         return viagensRealizadas;
     }
+
+    public int getCapacidade() {
+        return capacidade;
+    }
 }

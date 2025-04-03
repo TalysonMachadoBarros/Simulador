@@ -1,21 +1,36 @@
 public class Main {
     public static void main(String[] args) {
         SimuladorColetaLixo simulador = new SimuladorColetaLixo();
+        simulador.iniciar();
+        try {
+            Thread.sleep(10000); // Aguarda 10 segundos
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
-        // Adicionar caminhões pequenos
-        simulador.adicionarCaminhaoPequeno(new CaminhaoPequeno(2));
-        simulador.adicionarCaminhaoPequeno(new CaminhaoPequeno(4));
-        simulador.adicionarCaminhaoPequeno(new CaminhaoPequeno(8));
-        simulador.adicionarCaminhaoPequeno(new CaminhaoPequeno(10));
+        simulador.pausar();
+        try {
+            Thread.sleep(20000); // Aguarda 10 segundos
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
-        // Adicionar caminhões grandes
-        simulador.adicionarCaminhaoGrande(new CaminhaoGrande());
-        simulador.adicionarCaminhaoGrande(new CaminhaoGrande());
+        simulador.parar();
 
-        // Iniciar a simulação
-        System.out.println("Coleta Iniciada!");
-        simulador.simularColeta();
+        // // Adicionar caminhões pequenos
+        // simulador.adicionarCaminhaoPequeno(new CaminhaoPequeno(2));
+        // simulador.adicionarCaminhaoPequeno(new CaminhaoPequeno(4));
+        // simulador.adicionarCaminhaoPequeno(new CaminhaoPequeno(8));
+        // simulador.adicionarCaminhaoPequeno(new CaminhaoPequeno(10));
 
-        System.out.println("Coleta Finalizada!");
+        // // Adicionar caminhões grandes
+        // simulador.adicionarCaminhaoGrande(new CaminhaoGrande());
+        // simulador.adicionarCaminhaoGrande(new CaminhaoGrande());
+
+        // // Iniciar a simulação
+        // System.out.println("Coleta Iniciada!");
+        // simulador.simularColeta();
+
+        // System.out.println("Coleta Finalizada!");
     }
 }

@@ -11,6 +11,11 @@ public class Lista<T> {
         }
     }
 
+    public Lista() {
+        this.head = null;
+        this.size = 0;
+    }
+
     public void add(T data) {
         Node<T> newNode = new Node<>(data);
         if (head == null) {

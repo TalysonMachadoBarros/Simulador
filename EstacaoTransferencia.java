@@ -1,9 +1,10 @@
 public class EstacaoTransferencia {
-    int armazenamento;
+    private int armazenamento;
     private Fila<CaminhaoPequeno> filaCaminhoes;
 
-    public EstacaoTransferencia() {
+    public EstacaoTransferencia(int armazenamento) {
         filaCaminhoes = new Fila<>();
+        this.armazenamento = armazenamento;
     }
 
     public void adicionarCaminhao(CaminhaoPequeno caminhao) {
