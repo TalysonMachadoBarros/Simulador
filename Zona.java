@@ -1,35 +1,27 @@
 public class Zona {
-    private String nome;
-    private int geracaoLixo; // em toneladas
-    private int distanciaEstacao; // em quilômetros
-    private int tempoColeta; // em minutos
+    public String nome;
+    public int lixoMin;
+    public int lixoMax;
+    public int lixoDisponivel;
 
-    public Zona(String nome, int geracaoLixo, int distanciaEstacao) {
+    public Zona(String nome, int lixoMin, int lixoMax) {
         this.nome = nome;
-        this.geracaoLixo = geracaoLixo;
-        this.distanciaEstacao = distanciaEstacao;
-        this.tempoColeta = calcularTempoColeta();
+        this.lixoMin = lixoMin;
+        this.lixoMax = lixoMax;
+        this.lixoDisponivel = gerarLixo();
     }
 
-    private int calcularTempoColeta() {
-        // Supondo que a velocidade média do caminhão é de 30 km/h
-        int velocidadeMedia = 30; // km/h
-        return (int) Math.ceil((double) distanciaEstacao / velocidadeMedia * 60); // em minutos
+    public int gerarLixo() {
+        return lixoMin + (int)(Math.random() * (lixoMax - lixoMin + 1));
     }
 
-    public String getNome() {
-        return nome;
+    public int coletarLixo(int capacidade) {
+        int coletado = Math.min(capacidade, lixoDisponivel);
+        lixoDisponivel -= coletado;
+        return coletado;
     }
 
-    public int getGeracaoLixo() {
-        return geracaoLixo;
-    }
-
-    public int getDistanciaEstacao() {
-        return distanciaEstacao;
-    }
-
-    public int getTempoColeta() {
-        return tempoColeta;
+    public boolean temLixo() {
+        return lixoDisponivel > 0;
     }
 }

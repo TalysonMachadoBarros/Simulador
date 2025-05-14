@@ -1,26 +1,44 @@
 public class CaminhaoGrande {
-    private int capacidade;
-    private int cargaAtual;
+    public final int capacidadeMax = 20;
+    public int cargaAtual = 0;
+    public boolean emViagem = false;
+    public int tempoRestanteViagem = 0;
 
-    public CaminhaoGrande() {
-        this.capacidade = 20; // Capacidade fixa de 20 toneladas
-        this.cargaAtual = 0;
+    private final int tempoViagemCompleto = 60;
+
+    public boolean podeCarregar(EstacaoTransferencia estacao) {
+        return !emViagem && estacao.temLixoDisponivel();
     }
 
-    public void carregar(int carga) {
-        this.cargaAtual += carga;
+    public void carregar(EstacaoTransferencia estacao, int minutoAtual) {
+        cargaAtual = estacao.fornecerLixo(Math.min(capacidadeMax, estacao.getLixoAcumulado()));
+        emViagem = true;
+        tempoRestanteViagem = tempoViagemCompleto;
+        System.out.println(formatarHora(minutoAtual) + " - Caminhão grande saiu com " + cargaAtual + " toneladas.");
     }
 
-    public boolean estaVazio() {
-        return cargaAtual == 0;
+    public void avancarTempo() {
+        if (emViagem) {
+            tempoRestanteViagem--;
+            if (tempoRestanteViagem <= 0) {
+                descarregarNoLixao();
+            }
+        }
     }
 
-    public void descarregar() {
+    private void descarregarNoLixao() {
+        System.out.println("Caminhão grande descarregou " + cargaAtual + " toneladas no Lixao e ja esta disponivel para a proxima viagem");
         cargaAtual = 0;
-        System.out.println("Caminhão descarregado " + cargaAtual);
+        emViagem = false;
     }
 
-    public int getCargaAtual() {
-        return cargaAtual;
+    public boolean estaDisponivel() {
+        return !emViagem;
+    }
+
+    private String formatarHora(int minuto) {
+        int h = minuto / 60;
+        int m = minuto % 60;
+        return String.format("%02d:%02d", h, m);
     }
 }

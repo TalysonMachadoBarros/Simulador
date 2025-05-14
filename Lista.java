@@ -1,48 +1,35 @@
 public class Lista<T> {
-    private Node<T> head;
-    private int size;
+    private No<T> inicio;
+    private int tamanho;
 
-    private static class Node<T> {
-        T data;
-        Node<T> next;
-
-        Node(T data) {
-            this.data = data;
-        }
+    private static class No<T> {
+        T valor;
+        No<T> proximo;
+        No(T valor) { this.valor = valor; }
     }
 
-    public Lista() {
-        this.head = null;
-        this.size = 0;
-    }
-
-    public void add(T data) {
-        Node<T> newNode = new Node<>(data);
-        if (head == null) {
-            head = newNode;
+    public void adicionar(T valor) {
+        No<T> novo = new No<>(valor);
+        if (inicio == null) {
+            inicio = novo;
         } else {
-            Node<T> current = head;
-            while (current.next != null) {
-                current = current.next;
+            No<T> atual = inicio;
+            while (atual.proximo != null) {
+                atual = atual.proximo;
             }
-            current.next = newNode;
+            atual.proximo = novo;
         }
-        size++;
+        tamanho++;
     }
 
-    public T remove() {
-        if (head == null) return null;
-        T data = head.data;
-        head = head.next;
-        size--;
-        return data;
+    public T obter(int indice) {
+        if (indice < 0 || indice >= tamanho) return null;
+        No<T> atual = inicio;
+        for (int i = 0; i < indice; i++) atual = atual.proximo;
+        return atual.valor;
     }
 
-    public int size() {
-        return size;
-    }
-
-    public boolean isEmpty() {
-        return size == 0;
+    public int tamanho() {
+        return tamanho;
     }
 }
