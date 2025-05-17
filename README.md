@@ -124,3 +124,5 @@ Documentar todo o código e escrever o relatório.
 
 Apache POI para gerar relatórios em Excel.
 Matplotlib (Python) para gerar gráficos estatísticos.
+
+![image](https://github.com/user-attachments/assets/b033c362-daa5-4ad8-90f5-3194e45fd730)
